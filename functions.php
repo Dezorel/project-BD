@@ -72,5 +72,16 @@ function getDateFromDb(){
 	$data = $query->fetchAll();
 	return $data;
 }
+function getInfoTicket($temp) {
+	global $link;
 
+    $sql = "SELECT id_order,first_name, last_name, email, tel, date_flight, from_country, to_country, 
+	baggage, final_price FROM (((client_order C JOIN person P ON C.id_person = P.id_person) 
+	JOIN flight F ON (C.id_flight = F.id_flight)) JOIN direction D ON F.id_direction=D.id_direction)  WHERE id_order = $temp";
+
+	$query= $link->query($sql);
+	$query->execute();
+	$data = $query->fetchAll();
+	return $data;
+}
 ?>

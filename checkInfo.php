@@ -1,6 +1,7 @@
 <?php
 	require "db_connect.php";
-	require "functions.php";
+  require "functions.php";
+  $check = getInfoTicket($_GET['check']);
 ?>
 
 <!doctype html>
@@ -40,13 +41,26 @@
         <div class="card mt-5">
           <div class="card-header">
             Информация о билете номер <?php 
+            echo $check[0]['id_order'];
             ?>
           </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
-              
                 <?php
-                  
+                $baggage = $check[0]['baggage'];
+                if($baggage==0) {$baggage = "Ручная кладь";}
+                else {$baggage = "С багажом (до 20кг)";}
+                
+                   echo "Билет номер: ".$check[0]['id_order']."<br>";
+                   echo "Имя: ".$check[0]['first_name']."<br>";
+                   echo "Фамилия: ".$check[0]['last_name']."<br>";
+                   echo "Почта: ".$check[0]['email']."<br>";
+                   echo "Телефон: ".$check[0]['tel']."<br>";
+                   echo "Дата вылета: ".$check[0]['date_flight']."<br>";
+                   echo "Откуда: ".$check[0]['from_country']."<br>";
+                   echo "Куда: ".$check[0]['to_country']."<br>";
+                   echo "Багаж: ".$baggage."<br>";
+                   echo "Финальная цена: ".$check[0]['final_price'];
                 ?>
             
               
