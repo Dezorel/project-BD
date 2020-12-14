@@ -64,4 +64,13 @@ function getPrice(){
 	$data = $query->fetchAll();
 	return $data;
 }
+function getDateFromDb(){
+	global $link;
+    $sql = "SELECT COUNT(date_flight) as df FROM `flight` WHERE date_flight>= now()";		//запрос на получение полётов от сегодняшнего дня
+	$query= $link->query($sql);
+	$query->execute();
+	$data = $query->fetchAll();
+	return $data;
+}
+
 ?>

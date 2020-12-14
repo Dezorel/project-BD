@@ -202,7 +202,7 @@
 			</div>
 			<p align="center">Забыли когда дата вылета или на куда летите? Проверьте данные о Вашем рейсе у нас на сайте!</p>
 			
-			<form class="needs-validation mt-4 ml-3 mr-3" action="info.php" novalidate>
+			<form class="needs-validation mt-4 ml-3 mr-3" action="checkInfo.php" novalidate>
 			  	<div class="form-row mt-4">
 					  <div class="col-md-3"></div>
 					<div class="col-md-6 mb-3">

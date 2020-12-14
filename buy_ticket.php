@@ -102,7 +102,7 @@
       </div>
     </div>
     <!--Форма покупки-->
-    <form>
+    <form action="createOrder.php">
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">Имя</label>
         <div class="col-10">
