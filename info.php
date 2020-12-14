@@ -43,7 +43,7 @@
           </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
-              
+              <p>К сожалению такого билета не было найдено, попробуйте изменить дату</p>
                 <?php
                   
                 ?>

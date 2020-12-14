@@ -57,7 +57,7 @@
 
 		  <!--Форма для билета-->
 		  <div class="row mb-3 " id="buy">
-			<form class="needs-validation mt-4 ml-3 mr-3" novalidate action="buy_ticket.php" method="">
+			<form class="needs-validation mt-4 ml-3 mr-3" novalidate action="temp_buy_ticket.php" method="POST">
 				<h3 align="center">Купить билет</h3>
 				<div class="ml-5">
 					<div class="form-row mt-4">
@@ -81,9 +81,9 @@
 						<div class="col-md-3 mb-3">
 							<label for="validationCustom04" class="ml-2">Пассажир</label>
 							<select class="custom-select" id="validationCustom04" name="passanger" required>
-								<option selected value="1">1 Пассажир</option>
-								<option value="2">2 Пассажира</option>
-								<option value="3">3 Пассажира</option>
+								<option selected value="10">1 Пассажир</option>
+								<option value="20">2 Пассажира</option>
+								<option value="30">3 Пассажира</option>
 								<option value="11">1 Пассажир + младенец</option>
 								<option value="12">1 Пассажир + ребёнок</option>
 								<option value="21">2 Пассажира + младенец</option>
@@ -93,8 +93,8 @@
 						<div class="col-md-3 mb-3">
 							<label for="validationCustom04" class="ml-2">Багаж</label>
 							<select class="custom-select" id="validationCustom04" name="baggage" required>
-								<option selected value="1">Ручная кладь</option>
-								<option value="2">С багажом (до 20кг)</option>
+								<option selected value="0">Ручная кладь</option>
+								<option value="1">С багажом (до 20кг)</option>
 								
 							</select>
 						</div>

@@ -56,4 +56,12 @@ function getAllPlane(){
 	$data = $query->fetchAll();
 	return $data;
 }
+function getPrice(){
+	global $link;
+    $sql = "SELECT price_per_person FROM `flight`";
+	$query= $link->query($sql);
+	$query->execute();
+	$data = $query->fetchAll();
+	return $data;
+}
 ?>

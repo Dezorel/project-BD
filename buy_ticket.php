@@ -1,6 +1,53 @@
 <?php
 	require "db_connect.php";
-	require "functions.php";
+  require "functions.php";
+  session_start();
+
+   $passanger = $_SESSION['user']['passanger'];
+   $baggage = $_SESSION['user']['baggage'];
+
+    $pricePerPerson = getPrice();
+    $finalPrice = 0;
+
+   switch($passanger){
+        case 10:
+          $passanger="1";
+          $finalPrice = $pricePerPerson[0]["price_per_person"];
+        break;
+        case 20:
+          $passanger="2";
+          $finalPrice = $pricePerPerson[0]["price_per_person"]*2;
+        break;
+        case 30:
+          $passanger="3";
+          $finalPrice = $pricePerPerson[0]["price_per_person"]*3;
+        break;
+        case 11:
+          $passanger="1 + младенец";
+          $finalPrice = $pricePerPerson[0]["price_per_person"] +  $pricePerPerson[0]["price_per_person"]/4;
+        break;
+        case 12:
+          $passanger="1 + ребёнок";
+          $finalPrice = $pricePerPerson[0]["price_per_person"] +  $pricePerPerson[0]["price_per_person"]/2;
+        break;
+        case 21:
+          $passanger="2 + младенец";
+          $finalPrice = $pricePerPerson[0]["price_per_person"]*2 +  $pricePerPerson[0]["price_per_person"]/4;
+        break;
+        case 22:
+          $passanger="2 + ребёнок";
+          $finalPrice = $pricePerPerson[0]["price_per_person"]*2 +  $pricePerPerson[0]["price_per_person"]/2;
+        break;
+   }
+   switch($baggage){
+      case 0:
+       $baggage="Ручная кладь";
+      break;
+      case 1:
+        $baggage="С багажом (до 20кг)";
+        $finalPrice +=20;
+       break;
+   }
 ?>
 
 <!doctype html>
@@ -28,7 +75,7 @@
 			<div class="collapse navbar-collapse" id="navbarText">
 			  <ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-				  <a class="nav-link" href="index.html">Вернуться на главную</a>
+				  <a class="nav-link" href="index.php">Вернуться на главную</a>
 				</li>
 			  </ul>
 			  <span class="navbar-text">
@@ -44,7 +91,14 @@
     <div class="row mt-4 mb-2">
       <div class="col" align="center">
         <h2>Заполните следующие поля для покупки билета</h2>
-        <p class="mt-5">Ваш рейс ...</p>
+        <p class="mt-5">Ваш рейс из
+          <?php
+          echo $_SESSION['user']['from']." в ".$_SESSION['user']['to']."<br>";
+          echo "Дата вылета ".$_SESSION['user']['depart']."<br>Дата возращения ".$_SESSION['user']['return']."<br>"; 
+          echo "Количество пассажиров: ".$passanger."<br>Багаж: ".$baggage;
+          echo "<br>К оплате: ".$finalPrice." euro";
+          ?>
+        </p>
       </div>
     </div>
     <!--Форма покупки-->
