@@ -1,3 +1,8 @@
+<?php
+	require "db_connect.php";
+	require "functions.php";
+?>
+
 <!doctype html>
 <html lang="ru">
   <head>

@@ -1,3 +1,8 @@
+<?php
+	require "db_connect.php";
+
+?>
+
 <!doctype html>
 <html lang="ru">
   <head>
@@ -52,7 +57,7 @@
 
 		  <!--Форма для билета-->
 		  <div class="row mb-3 " id="buy">
-			<form class="needs-validation mt-4 ml-3 mr-3" novalidate action="buy_ticket.html" method="">
+			<form class="needs-validation mt-4 ml-3 mr-3" novalidate action="buy_ticket.php" method="">
 				<h3 align="center">Купить билет</h3>
 				<div class="ml-5">
 					<div class="form-row mt-4">
@@ -146,7 +151,7 @@
 							так что отдых в Лондоне скучным ну никак не назовешь.</p>
 					  </div>
 					  <div class="card-footer">
-						<a class="btn btn-info" href="info.html" role="button">Подробнее</a>
+						<a class="btn btn-info" href="infoLondon.php" role="button">Подробнее</a>
 					  </div>
 					</div>
 					<div class="card">
@@ -160,7 +165,7 @@
 							не найдется.</p>
 					  </div>
 					  <div class="card-footer">
-						<a class="btn btn-info" href="info.html" role="button">Подробнее</a>
+						<a class="btn btn-info" href="infoParis.php" role="button">Подробнее</a>
 					  </div>
 					</div>
 					<div class="card">
@@ -173,14 +178,14 @@
 							Ватикана. Закружиться в водовороте фресок Микеланджело и картин Леонардо.</p>
 					  </div>
 					  <div class="card-footer">
-						<a class="btn btn-info" href="info.html" role="button">Подробнее</a>
+						<a class="btn btn-info" href="infoRim.php" role="button">Подробнее</a>
 					  </div>
 					</div>
 				  </div>
 			</div>
 			<div class="row mt-4">
 				<div class="col">
-					<a class="btn btn-lg btn-block btn-outline-secondary" href="info.html" role="button">Посмотреть все направления</a>
+					<a class="btn btn-lg btn-block btn-outline-secondary" href="infoAllFlight.php" role="button">Посмотреть все направления</a>
 				</div>
 			</div>
 		</div>
@@ -197,7 +202,7 @@
 			</div>
 			<p align="center">Забыли когда дата вылета или на куда летите? Проверьте данные о Вашем рейсе у нас на сайте!</p>
 			
-			<form class="needs-validation mt-4 ml-3 mr-3" action="info.html" novalidate>
+			<form class="needs-validation mt-4 ml-3 mr-3" action="info.php" novalidate>
 			  	<div class="form-row mt-4">
 					  <div class="col-md-3"></div>
 					<div class="col-md-6 mb-3">
@@ -247,7 +252,7 @@
 							дальность полета увеличена более чем на 30% по сравнению с основной модификацией.</p>
 				  	</div>
 				  	<div class="card-footer">
-						<a class="btn btn-info" href="info.html" role="button">Подробнее</a>
+						<a class="btn btn-info" href="info.php" role="button">Подробнее</a>
 				 	</div>
 				</div>
 				<div class="card">
@@ -259,14 +264,14 @@
 							на котором была установлена электродистанционная система управления.</p>
 				  	</div>
 				 	<div class="card-footer">
-						<a class="btn btn-info" href="info.html" role="button">Подробнее</a>
+						<a class="btn btn-info" href="info.php" role="button">Подробнее</a>
 				  	</div>
 				</div>
 			</div>
 		</div>
 		<div class="row mt-4">
 			<div class="col">
-				<a class="btn btn-lg btn-block btn-outline-secondary" href="info.html" role="button">Посмотреть все самолёты</a>
+				<a class="btn btn-lg btn-block btn-outline-secondary" href="info.php" role="button">Посмотреть все самолёты</a>
 			</div>
 		</div>
 	</div>

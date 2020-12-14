@@ -39,15 +39,24 @@
 
         <div class="card mt-5">
           <div class="card-header">
-            Информация о...
+            Информация о направлении <?php
+                  $paris = getParis();
+                  foreach($paris as $p)
+                  {
+                    echo $p['to_country'];
+                  }
+                ?>
           </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
-              
+              <p>
                 <?php
-                  
+                  foreach($paris as $p)
+                  {
+                    echo $p['info'];
+                  }
                 ?>
-            
+              </p>
               
               
               <!--<footer class="blockquote-footer"></footer>-->

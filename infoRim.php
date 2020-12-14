@@ -39,15 +39,24 @@
 
         <div class="card mt-5">
           <div class="card-header">
-            Информация о...
+            Информация о направлении <?php
+                  $rim = getRim();
+                  foreach($rim as $r)
+                  {
+                    echo $r['to_country'];
+                  }
+                ?>
           </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
-              
+              <p>
                 <?php
-                  
+                  foreach($rim as $r)
+                  {
+                    echo $r['info'];
+                  }
                 ?>
-            
+              </p>
               
               
               <!--<footer class="blockquote-footer"></footer>-->

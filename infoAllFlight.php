@@ -39,15 +39,21 @@
 
         <div class="card mt-5">
           <div class="card-header">
-            Информация о...
+            Информация о всех направлениях
           </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
-              
+              <p>
                 <?php
-                  
+                  $allFlight = getAllFlight();
+                  foreach($allFlight as $AF)
+                  {
+                      echo "<h3>".$AF["to_country"]."</h3>";
+                      echo  "<p>".$AF["info"]."</p>";
+                      echo  "<hr><br>";
+                  }
                 ?>
-            
+              </p>
               
               
               <!--<footer class="blockquote-footer"></footer>-->
