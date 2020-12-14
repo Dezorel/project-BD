@@ -32,6 +32,28 @@ function getAllFlight(){
 	$data = $query->fetchAll();
 	return $data;
 }
-
-
+function getBoeing(){
+    global $link;
+    $sql = "SELECT * FROM `plane` WHERE id_plane=1";
+	$query= $link->query($sql);
+	$query->execute();
+	$data = $query->fetchAll();
+	return $data;
+}
+function getAirBus(){
+    global $link;
+    $sql = "SELECT * FROM `plane` WHERE id_plane=2";
+	$query= $link->query($sql);
+	$query->execute();
+	$data = $query->fetchAll();
+	return $data;
+}
+function getAllPlane(){
+    global $link;
+    $sql = "SELECT * FROM `plane`";
+	$query= $link->query($sql);
+	$query->execute();
+	$data = $query->fetchAll();
+	return $data;
+}
 ?>

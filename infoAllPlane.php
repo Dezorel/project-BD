@@ -1,6 +1,7 @@
 <?php
 	require "db_connect.php";
-	require "functions.php";
+  require "functions.php";
+  $allPlane = getAllPlane();
 ?>
 
 <!doctype html>
@@ -16,7 +17,7 @@
     <title>Информация</title>
   </head>
   <body>
-    <div class="container" id="up">
+    <div class="container-xl" id="up">
         <!--Навигационная панель-->
 		<nav class="navbar navbar-expand-lg navbar-light " style="background-color:white">
 			<a class="navbar-brand" style="margin-right: 50px; " href="#">7Avia</a>
@@ -26,8 +27,14 @@
 			<div class="collapse navbar-collapse" id="navbarText">
 			  <ul class="navbar-nav mr-auto">
 				<li class="nav-item">
-				  <a class="nav-link" href="index.php">Вернуться на главную</a>
-				</li>
+				  <a class="nav-link" href="index.php">Назад</a>
+        </li>
+        <?php
+          foreach($allPlane as $AP)
+          {
+              echo "<li class='nav-item'><a class='nav-link' href='#".$AP["name_plane"]."'>".$AP["name_plane"]."</a>";
+          }
+        ?>
 			  </ul>
 			  <span class="navbar-text">
 				telephone: <a class="mr-5" href="tel:078113237"> 077-77-77-77</a>
@@ -39,15 +46,20 @@
 
         <div class="card mt-5">
           <div class="card-header">
-            Информация о...
+            Информация о всех самолётах
           </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
-              
+              <p>
                 <?php
-                  
+                  foreach($allPlane as $AP)
+                  {
+                      echo "<h3 id=".$AP["name_plane"].">".$AP["name_plane"]."</h3>";
+                      echo  "<p>".$AP["info"]."</p>";
+                      echo  "<hr><br>";
+                  }
                 ?>
-            
+              </p>
               
               
               <!--<footer class="blockquote-footer"></footer>-->

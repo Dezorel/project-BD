@@ -1,6 +1,7 @@
 <?php
 	require "db_connect.php";
-	require "functions.php";
+  require "functions.php";
+  $boeing = getBoeing();
 ?>
 
 <!doctype html>
@@ -39,13 +40,18 @@
 
         <div class="card mt-5">
           <div class="card-header">
-            Информация о...
+            Информация о самолёте 
+            <?php
+            echo $boeing[0]['name_plane'];
+            ?>
           </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
-              
                 <?php
-                  
+                  foreach($boeing as $b) {
+                    echo "Максимальное количество мест в самолёте: ".$b['max_places']."<br>";
+                    echo $b['info'];
+                  }
                 ?>
             
               

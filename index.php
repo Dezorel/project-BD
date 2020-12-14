@@ -252,7 +252,7 @@
 							дальность полета увеличена более чем на 30% по сравнению с основной модификацией.</p>
 				  	</div>
 				  	<div class="card-footer">
-						<a class="btn btn-info" href="info.php" role="button">Подробнее</a>
+						<a class="btn btn-info" href="infoBoeing.php" role="button">Подробнее</a>
 				 	</div>
 				</div>
 				<div class="card">
@@ -264,14 +264,14 @@
 							на котором была установлена электродистанционная система управления.</p>
 				  	</div>
 				 	<div class="card-footer">
-						<a class="btn btn-info" href="info.php" role="button">Подробнее</a>
+						<a class="btn btn-info" href="infoAirbus.php" role="button">Подробнее</a>
 				  	</div>
 				</div>
 			</div>
 		</div>
 		<div class="row mt-4">
 			<div class="col">
-				<a class="btn btn-lg btn-block btn-outline-secondary" href="info.php" role="button">Посмотреть все самолёты</a>
+				<a class="btn btn-lg btn-block btn-outline-secondary" href="infoAllPlane.php" role="button">Посмотреть все самолёты</a>
 			</div>
 		</div>
 	</div>
