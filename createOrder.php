@@ -56,11 +56,48 @@ if($pas == "septefrati")        //покупка
     $sql = " INSERT INTO `client_order` ( `id_person`, `id_flight`, `baggage`, `final_price`) 
     VALUES ( $lastIDPerson, $idFlight , $baggage, $final_price)";
 	$query= $link->query($sql);
-	$query->execute();
-	$data = $query->fetchAll();         //получаю id заказа 
+   
+    $lastIDOrder = $link->lastInsertId();       //получаю id заказа 
 	
-        
+    //отправка сообщения на указанную почту
+    require_once 'phpMail/PHPMailer.php';
+    require_once 'phpMail/SMTP.php';
+    require_once 'phpMail/Exception.php';
+
+    $title = "Заказ номер".$lastIDOrder;        //заголовок письма
+    $body = "Вы купили билет на самолёт ".$_SESSION['user']['from']."-".$_SESSION['user']['to']."<br>".
+    "Дата вылета: ".$_SESSION['user']['depart']."<br>Дата возвращения ".$_SESSION['user']['return']."<br>".
+    "Стоимость билета составила: ".$_SESSION['user2']['final_price']."<br>".
+    "Спасибо что пользуетесь нашими авиалиниями!"              ;                                //само письмо
+
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
+   
+        $mail->isSMTP();
+        $mail->CharSet = 'UTF-8';
+        $mail->SMTPAuth = true;
+
+
+        //настройки почты с которой отправляется письмо
+        $mail->Host = 'smtp.mail.ru';
+        $mail->Username = '7avia_ticket@mail.ru';
+        $mail->Password = 'yBYs4jYpPp&3';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
+        $mail->setFrom('7avia_ticket@mail.ru', '7Avia, BEST Tickets');
+
+        $mail->addAddress($email);
+
+    
+    $mail->isHTML(true);
+    $mail->Subject = $title;
+    $mail->Body = $body;
+    if(!$mail->send()){
+        echo "Ошбика";
+    }
+    else{
+        echo"Удача";
+    }
 }
-else echo 2;        //недостаточно средств
+else echo "Недостаточно средств на счету";        //недостаточно средств
 
 ?>

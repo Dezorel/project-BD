@@ -31,7 +31,7 @@
 			  </ul>
 			  <span class="navbar-text">
 				telephone: <a class="mr-5" href="tel:078113237"> 077-77-77-77</a>
-				email:<a href="mailto:7avia@gmail.com">7avia@gmail.com</a>
+				email:<a href="mailto:7avia_ticket@mail.ru">7avia_ticket@mail.ru</a>
 			  </span>
 			</div>
 		</nav>
