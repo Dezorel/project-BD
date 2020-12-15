@@ -88,4 +88,12 @@ function getInfoTicket($temp) {
 	$data = $query->fetchAll();
 	return $data;
 }
+function getIDNP(){
+	global $link;
+    $sql = "SELECT idnp, id_person FROM `person`";
+	$query= $link->query($sql);
+	$query->execute();
+	$data = $query->fetchAll();
+	return $data;
+}
 ?>

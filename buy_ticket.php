@@ -25,7 +25,8 @@
         case 11:
           $passanger="1 + младенец";
           $finalPrice = $pricePerPerson +  $pricePerPerson/4;
-
+          break;
+        case 12:
           $passanger="1 + ребёнок";
           $finalPrice = $pricePerPerson +  $pricePerPerson/2;
         break;
@@ -87,13 +88,20 @@
         
 
     <!--Форма покупки-->
-    <div class="row mt-4 mb-2">
+    <div class="row mt-3 mb-2">
       <div class="col" align="center">
         <h2>Заполните следующие поля для покупки билета</h2>
-        <p class="mt-5">Ваш рейс из
+        <p class="mt-3">Ваш рейс из
           <?php
-          echo $_SESSION['user']['from']." в ".$_SESSION['user']['to']."<br>";
-          echo "Дата вылета ".$_SESSION['user']['depart']."<br>Дата возращения ".$_SESSION['user']['return']."<br>"; 
+          $from =$_SESSION['user']['from'];
+          $to = $_SESSION['user']['to'];
+          $data_depart =$_SESSION['user']['depart'];
+          $return_date =  $_SESSION['user']['return'];
+
+          $_SESSION['user2']=['final_price' => $finalPrice];
+
+          echo $from." в ".$to."<br>";
+          echo "Дата вылета ".$data_depart."<br>Дата возращения ".$return_date."<br>"; 
           echo "Количество пассажиров: ".$passanger."<br>Багаж: ".$baggage;
           echo "<br>К оплате: ".$finalPrice." euro";
           ?>
@@ -101,7 +109,7 @@
       </div>
     </div>
     <!--Форма покупки-->
-    <form action="createOrder.php">
+    <form action="createOrder.php" method="post">
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">Имя</label>
         <div class="col-10">
@@ -135,7 +143,7 @@
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">К оплате(указана стоимость)</label>
         <div class="col-10">
-          <input class="form-control" type="text" id="example-text-input" name="pas" required>
+          <input class="form-control" type="text" id="example-text-input" name="pas">
         </div>
       </div>
       <div class="form-row mt-4">

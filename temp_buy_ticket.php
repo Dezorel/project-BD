@@ -3,6 +3,7 @@ require "db_connect.php";
 require "functions.php";
 
 session_start();
+
 $currentDateTicket = getDateFromDb();
 $currentTickets = getFlightTickets();
 
@@ -22,6 +23,7 @@ foreach ($currentTickets as $ct)
                     "passanger"=>$_POST['passanger'],
                     "baggage"=>$_POST['baggage'],
                     "price"=>$ct['price_per_person'],
+                    "id_flight"=>$ct['id_flight'],
                     ];
                     header("Location: buy_ticket.php");
                     exit();
