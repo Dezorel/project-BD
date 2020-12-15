@@ -56,14 +56,6 @@ function getAllPlane(){
 	$data = $query->fetchAll();
 	return $data;
 }
-function getPrice(){
-	global $link;
-    $sql = "SELECT price_per_person FROM `flight`";
-	$query= $link->query($sql);
-	$query->execute();
-	$data = $query->fetchAll();
-	return $data;
-}
 function getDateFromDb(){
 	global $link;
     $sql = "SELECT COUNT(date_flight) as df FROM `flight` WHERE date_flight>= now()";		//запрос на получение полётов от сегодняшнего дня
@@ -72,9 +64,21 @@ function getDateFromDb(){
 	$data = $query->fetchAll();
 	return $data;
 }
-function getInfoTicket($temp) {
+function getFlightTickets(){
 	global $link;
 
+    $sql = "SELECT id_flight, date_flight, depart_time, price_per_person, 
+	D.id_direction, to_country, from_country, return_date, return_time FROM `flight` F JOIN `direction` D 
+	ON (F.id_direction = D.id_direction) WHERE date_flight>= now()";
+
+	$query= $link->query($sql);
+	$query->execute();
+	$data = $query->fetchAll();
+	return $data;
+}
+function getInfoTicket($temp) {
+	global $link;
+	
     $sql = "SELECT id_order,first_name, last_name, email, tel, date_flight, from_country, to_country, 
 	baggage, final_price FROM (((client_order C JOIN person P ON C.id_person = P.id_person) 
 	JOIN flight F ON (C.id_flight = F.id_flight)) JOIN direction D ON F.id_direction=D.id_direction)  WHERE id_order = $temp";

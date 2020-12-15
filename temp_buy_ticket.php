@@ -4,22 +4,28 @@ require "functions.php";
 
 session_start();
 $currentDateTicket = getDateFromDb();
-
-if(!empty($_POST['from']) && !empty($_POST['to']) && !empty($_POST['depart']) && !empty($_POST['return']) && ($currentDateTicket[0]['df']>0)){
-    
-    $_SESSION['user']=[
-        "from"=>$_POST['from'],
-        "to"=>$_POST['to'],
-        "depart"=>$_POST['depart'],
-        "return"=>$_POST['return'],
-        "passanger"=>$_POST['passanger'],
-        "baggage"=>$_POST['baggage'],
-        ];
-        header("Location: buy_ticket.php");
-        exit();
+$currentTickets = getFlightTickets();
+$i=0;
+foreach ($currentTickets as $ct)
+{
+    if( ($ct['to_country'] == $_POST['to']) && ($currentDateTicket[0]['df']>0 ))
+    {
+        $_SESSION['user']=[
+            "from"=>$_POST['from'],
+            "to"=>$_POST['to'],
+            "depart"=>$ct['date_flight'],
+            "return"=>$ct['return_date'],
+            "passanger"=>$_POST['passanger'],
+            "baggage"=>$_POST['baggage'],
+            "price"=>$ct['price_per_person'],
+            ];
+            header("Location: buy_ticket.php");
+            exit();
+    }
+    else $i++;
 }
-else{
-    echo "<h1>Ошибка, нет новых билетов</h1>";             //тут надо вставить что показывать когда билетов нет...
+if($i>0){
+    header("Location: info.php");
 }
 
 ?>

@@ -6,37 +6,36 @@
    $passanger = $_SESSION['user']['passanger'];
    $baggage = $_SESSION['user']['baggage'];
 
-    $pricePerPerson = getPrice();
+    $pricePerPerson = $_SESSION['user']['price'];
     $finalPrice = 0;
 
    switch($passanger){
         case 10:
           $passanger="1";
-          $finalPrice = $pricePerPerson[0]["price_per_person"];
+          $finalPrice = $pricePerPerson;
         break;
         case 20:
           $passanger="2";
-          $finalPrice = $pricePerPerson[0]["price_per_person"]*2;
+          $finalPrice = $pricePerPerson*2;
         break;
         case 30:
           $passanger="3";
-          $finalPrice = $pricePerPerson[0]["price_per_person"]*3;
+          $finalPrice = $pricePerPerson*3;
         break;
         case 11:
           $passanger="1 + младенец";
-          $finalPrice = $pricePerPerson[0]["price_per_person"] +  $pricePerPerson[0]["price_per_person"]/4;
-        break;
-        case 12:
+          $finalPrice = $pricePerPerson +  $pricePerPerson/4;
+
           $passanger="1 + ребёнок";
-          $finalPrice = $pricePerPerson[0]["price_per_person"] +  $pricePerPerson[0]["price_per_person"]/2;
+          $finalPrice = $pricePerPerson +  $pricePerPerson/2;
         break;
         case 21:
           $passanger="2 + младенец";
-          $finalPrice = $pricePerPerson[0]["price_per_person"]*2 +  $pricePerPerson[0]["price_per_person"]/4;
+          $finalPrice = $pricePerPerson*2 +  $pricePerPerson/4;
         break;
         case 22:
           $passanger="2 + ребёнок";
-          $finalPrice = $pricePerPerson[0]["price_per_person"]*2 +  $pricePerPerson[0]["price_per_person"]/2;
+          $finalPrice = $pricePerPerson*2 +  $pricePerPerson/2;
         break;
    }
    switch($baggage){
