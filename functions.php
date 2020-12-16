@@ -96,4 +96,24 @@ function getIDNP(){
 	$data = $query->fetchAll();
 	return $data;
 }
+function getRatingDirection(){
+	global $link;
+
+    $sql = " SELECT R.id_direction as id_direction, to_country ,`cur_rating` FROM `rating` R JOIN direction D on 
+	(R.id_direction = D.id_direction) WHERE `cur_rating` >(SELECT AVG(`cur_rating`) FROM `rating`) 
+	ORDER by `cur_rating` DESC LIMIT 3; ";
+
+	$query= $link->query($sql);
+	$query->execute();
+	$data = $query->fetchAll();
+	return $data;
+}
+function getAVGPrice($direction){
+	global $link;
+    $sql = " SELECT AVG(price_per_person) as price FROM `flight` WHERE id_direction = $direction ";
+	$query= $link->query($sql);
+	$query->execute();
+	$data = $query->fetchAll();
+	return $data;
+}
 ?>

@@ -39,7 +39,10 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="#company">О нас</a>
-				  </li>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="infoPrice.php">Цены</a>
+				</li>
 			  </ul>
 			  <span class="navbar-text">
 				telephone: <a class="mr-5" href="tel:077777777"> 077-77-77-77</a>
@@ -132,10 +135,10 @@
 		<!--Конец формы для заполения-->
 	<hr class="mt-3">
 	
-		<!--Популярные направления-->
+		<!--Рекомендуемые направления-->
 		<div class="mt-4 mb-3">
 			<div class="row mb-2" id="popular">
-				<div class="col"><h2 align="center">Популярные направления</h2></div>
+				<div class="col"><h2 align="center">Рекомендуемые направления</h2></div>
 			</div>
 			<div class="row">
 				<div class="card-deck">
@@ -189,7 +192,7 @@
 				</div>
 			</div>
 		</div>
-		<!--Конец популярных направлений-->
+		<!--Конец рекомендуемых направлений-->
 	<hr class="mt-3">
 
 
