@@ -43,13 +43,13 @@
           </div>
           <div class="card-body">
             <blockquote class="blockquote mb-0">
-              <p>Наши самы популярные направления и их средняя цена билета:</p>
+              <p>Наши самы популярные направления и их средняя цена билета (на одного человека):</p>
                 <?php
                 $rating = getRatingDirection();
 
                   foreach($rating as $r){
                     $cur_id = getAVGPrice($r['id_direction']); 
-                    echo $r['to_country'].", средняя цена билета = ".$cur_id[0]['price']."euro <br>";
+                    echo $r['to_country'].", средняя цена билета = ".$cur_id[0]['price']." euro <br>";
                   }
                 ?>
             

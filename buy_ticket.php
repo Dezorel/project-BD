@@ -11,15 +11,15 @@
 
    switch($passanger){
         case 10:
-          $passanger="1";
+          $passanger=1;
           $finalPrice = $pricePerPerson;
         break;
         case 20:
-          $passanger="2";
+          $passanger=2;
           $finalPrice = $pricePerPerson*2;
         break;
         case 30:
-          $passanger="3";
+          $passanger=3;
           $finalPrice = $pricePerPerson*3;
         break;
         case 11:
@@ -45,7 +45,9 @@
       break;
       case 1:
         $baggage="С багажом (до 20кг)";
-        $finalPrice +=20;
+        if($passanger === 1)  $finalPrice +=20;
+        if($passanger === 2)  $finalPrice +=40;
+        if($passanger === 3)  $finalPrice +=60;
        break;
    }
 ?>

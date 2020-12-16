@@ -79,7 +79,7 @@ function getFlightTickets(){
 function getInfoTicket($temp) {
 	global $link;
 	
-    $sql = "SELECT id_order,first_name, last_name, email, tel, date_flight, from_country, to_country, 
+    $sql = "SELECT id_order, C.id_person as id_person, first_name, last_name, email, tel, date_flight, from_country, to_country, 
 	baggage, final_price FROM (((client_order C JOIN person P ON C.id_person = P.id_person) 
 	JOIN flight F ON (C.id_flight = F.id_flight)) JOIN direction D ON F.id_direction=D.id_direction)  WHERE id_order = $temp";
 
@@ -111,6 +111,14 @@ function getRatingDirection(){
 function getAVGPrice($direction){
 	global $link;
     $sql = " SELECT AVG(price_per_person) as price FROM `flight` WHERE id_direction = $direction ";
+	$query= $link->query($sql);
+	$query->execute();
+	$data = $query->fetchAll();
+	return $data;
+}
+function getCountTicketPerson($id_person){
+	global $link;
+    $sql = " SELECT count(*) as `count` FROM `client_order` WHERE id_person = $id_person ";
 	$query= $link->query($sql);
 	$query->execute();
 	$data = $query->fetchAll();

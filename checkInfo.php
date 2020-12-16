@@ -77,7 +77,9 @@
                   echo "Откуда: ".$check[0]['from_country']."<br>";
                   echo "Куда: ".$check[0]['to_country']."<br>";
                   echo "Багаж: ".$baggage."<br>";
-                  echo "Финальная цена: ".$check[0]['final_price'];
+                  echo "Финальная цена: ".$check[0]['final_price']."<br>";
+                  $count = getCountTicketPerson($check[0]['id_person']);
+                  echo "Вы летали нашими авиалиниями: ".$count[0]['count']." раз!";
                 }
               
                ?>

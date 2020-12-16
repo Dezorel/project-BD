@@ -25,12 +25,20 @@ foreach ($currentTickets as $ct)
                     "price"=>$ct['price_per_person'],
                     "id_flight"=>$ct['id_flight'],
                     ];
+                    echo 1;
                     header("Location: buy_ticket.php");
                     exit();
             }
-            else header("Location: info.php");
+            else {
+                header("Location: info.php");
+                exit();
+            }
     }
+  
+      
+    
 }
-
+header("Location: info.php");
+exit();
 
 ?>
