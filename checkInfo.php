@@ -1,6 +1,7 @@
 <?php
 	require "db_connect.php";
   require "functions.php";
+  session_start();
   $check = getInfoTicket($_POST['check']);
 ?>
 
@@ -79,12 +80,13 @@
                   echo "Багаж: ".$baggage."<br>";
                   echo "Финальная цена: ".$check[0]['final_price']."<br>";
                   $count = getCountTicketPerson($check[0]['id_person']);
+                  $_SESSION['cur_user']=["id"=>$check[0]['id_person']];
                   echo "Вы летали нашими авиалиниями: ".$count[0]['count']." раз!";
                 }
               
                ?>
                 
-                   
+                
             
               
               
@@ -92,10 +94,32 @@
             </blockquote>
           </div>
         </div>
+                <div class="row mt-5" >
+                  <div class="col">
+                    <h4>Функции для администратора:</h4>
+                  </div>
+                  </div>
+      <div class="row mt">
+        <div class="col-6">
+          
+          <form class="needs-validation mt-4 ml-3 mr-3" novalidate action="UpdateAdmin.php" method="POST">
+          <div class="form-group row">
+        <label for="example-email-input" class="col-2 col-form-label">Email</label>
+        <div class="col-10">
+          <input class="form-control" type="email" id="example-email-input" name="newEmail" required>
+        </div>
+      </div>
+              <button class="btn btn-info mt-2" type="submit">Изменить почту</button>
+			</form>
+        </div>
+      </div>
 
+<div class="row mt-3 ml-1 mb-5">
+<div class="col-6">
 
-
-
+<a class="btn btn-info" href="DeleteAdmin.php" role="button">Удалить полёты этого человека</a>
+</div>
+</div>
 
 
 
