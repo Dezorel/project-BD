@@ -50,6 +50,10 @@ if($pas == "septefrati")        //покупка
     }
    
 
+    $time= getTimeFlight($idFlight);
+    $timeDepart = $time[0]['depart_time'];
+    $timeReturn = $time[0]['return_time'];
+
 
     //создаю заказ на этого человека
  
@@ -58,15 +62,16 @@ if($pas == "septefrati")        //покупка
 	$query= $link->query($sql);
    
     $lastIDOrder = $link->lastInsertId();       //получаю id заказа 
-	
+	$_SESSION['order']=["id"=>$lastIDOrder];
     //отправка сообщения на указанную почту
     require_once 'phpMail/PHPMailer.php';
     require_once 'phpMail/SMTP.php';
     require_once 'phpMail/Exception.php';
 
-    $title = "Заказ номер".$lastIDOrder;        //заголовок письма
+    $title = "Заказ номер ".$lastIDOrder;        //заголовок письма
     $body = "Вы купили билет на самолёт ".$_SESSION['user']['from']."-".$_SESSION['user']['to']."<br>".
-    "Дата вылета: ".$_SESSION['user']['depart']."<br>Дата возвращения ".$_SESSION['user']['return']."<br>".
+    "Дата вылета: ".$_SESSION['user']['depart']."<br>"."Время вылета: ".$timeDepart."<br>".
+    "Дата возвращения ".$_SESSION['user']['return']."<br>"."Время возвращения: ".$timeReturn."<br>".
     "Стоимость билета составила: ".$_SESSION['user2']['final_price']."<br>".
     "Спасибо что пользуетесь нашими авиалиниями!"              ;                                //само письмо
 
@@ -92,12 +97,12 @@ if($pas == "septefrati")        //покупка
     $mail->Subject = $title;
     $mail->Body = $body;
     if(!$mail->send()){
-        //Ошибка отправки на почту
+        header("Location: succes.php");       //ошибка отправки на почту
     }
     else{
-       //удача отправки на почту
+       header("Location: succes.php");    //успешно отправлено на почту
     }
 }
-else echo "Недостаточно средств на счету";        //недостаточно средств
+else header("Location: InsufficientFunds.php");        //недостаточно средств
 
 ?>

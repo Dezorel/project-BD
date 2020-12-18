@@ -124,4 +124,17 @@ function getCountTicketPerson($id_person){
 	$data = $query->fetchAll();
 	return $data;
 }
+function getTimeFlight($id_flight){
+	global $link;
+    $sql = " SELECT id_flight, date_flight, depart_time, D.id_direction, to_country, 
+	from_country, return_date, return_time FROM `flight` F JOIN `direction` D ON (F.id_direction = D.id_direction) 
+	WHERE id_flight = $id_flight ";
+	$query= $link->query($sql);
+	$query->execute();
+	$data = $query->fetchAll();
+	return $data;
+}
+
+
+
 ?>
